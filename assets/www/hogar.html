@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.1.0.css">
+
+     
+    <script src="js/libs/jquery-1.7.1.min.js"></script>
+
+    <script src="js/libs/jquery.mobile-1.1.0.js" type="text/javascript"></script> 
+    <script src="js/cordova-1.6.1.js"  type="text/javascript"></script>
+    <script src="js/webintent.js"  type="text/javascript"></script>   
+
+    
+    <link type="text/css" href="css/jquery.mobile.datebox.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/jquery.mobile.simpledialog.min.css" rel="stylesheet" />  
+    <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.datebox.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.simpledialog.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link type="text/css" href="css/prettify.css" rel="stylesheet" />
+    
+    <script src="js/hogar.js"></script>
+    <link type="text/css" href="css/css.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div data-role="page" id="paginaPrincipal">
+        <div data-role="header">
+            <h1>Inspecciones</h1>
+            <a href="#" onClick="verMenu()" data-icon="grid"  class="ui-btn-right">Menu</a><!-- data-iconpos="notext" -->
+        </div>
+        <!-- header -->
+        <div data-role="content" align="center">
+            <ul data-role="listview" data-inset="true" >
+              <li data-role="list-divider">Acciones</li>    
+             <li><a href="#" onClick="verInspeccionesMok()">Inspecciones desde MOK <span class="ui-li-count">12</span></a></li>
+              <li><a href="#" onClick="verInspeccionesTablet()">Inspecciones Pendientes desde la Galaxy <span class="ui-li-count">2</span></a></li>
+              
+            </ul>
+
+            <br>
+            <br>
+            <br>
+            <ul data-role="listview" id="listaInspecciones">
+              <li data-role="list-divider">Inspecciones</li>    
+              
+            </ul>
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="menu">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="index.html" id="" data-icon="arrow-l"><h3>Atras</h3></a></li>
+                    <li><a href="#" onclick="document.location.href='#paginaAntecedentesGenerales'" id=""
+                        data-icon="arrow-r"><h3> Siguiente</h3></a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaAntecedentesGenerales">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Antecedentes Generales</li>
+                <li>
+                    <div data-role="fieldcontain">
+                        <label for="txtNumcaso">
+                            <b>Caso:</b></label>
+                        <input type="number" name="txtNumcaso" id="txtNumcaso" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtNumSiniestro">
+                            <b>Siniestro:</b></label>
+                        <input type="number" name="txtNumSiniestro" id="txtNumSiniestro" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtCompania">
+                            <b>Compa&ntilde;ia:</b></label>
+                        <input type="text" name="txtCompania" id="txtCompania" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtFechaSiniestro">
+                            <b>Fecha/Hora Siniestro:</b></label>
+                        <input type="date" data-role="datebox" id="txtFechaSiniestro" data-options='{"mode": "flipbox"}'  value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtFechaInspeccion">
+                            <b>Fecha/Hora Inspeccion:</b></label>
+                        <input type="date" data-role="datebox" id="txtFechaInspeccion" data-options='{"mode": "flipbox"}' value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtInspector">
+                            <b>Inspector:</b></label>
+                        <input type="text" name="txtInspector" id="txtInspector" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtLugarInspector">
+                            <b>Lugar Inspeccion:</b></label>
+                        <input type="text" name="txtLugarInspector" id="txtLugarInspector" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtAsegurado">
+                            <b>Asegurado:</b></label>
+                        <input type="text" name="txtAsegurado" id="txtAsegurado" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtRutAsegurado">
+                            <b>Rut Asegurado:</b></label>
+                        <input type="number" name="txtRutAsegurado" id="txtRutAsegurado" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtContacto">
+                            <b>Nombre Contacto:</b></label>
+                        <input type="text" name="txtContacto" id="txtContacto" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtRutContacto">
+                            <b>Rut Contacto:</b></label>
+                        <input type="number" name="txtRutContacto" id="txtRutContacto" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtRelacionCargo">
+                            <b>Relaci&oacute;n/Cargo:</b></label>
+                        <input type="text" name="txtRelacionCargo" id="txtRelacionCargo" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtFonoFax">
+                            <b>Fono/Fax:</b></label>
+                        <input type="tel" name="txtFonoFax" id="txtFonoFax" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtEmail1">
+                            <b>Email 1:</b></label>
+                        <input type="email" name="txtEmail1" id="txtEmail1" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtEmail2">
+                            <b>Email 2:</b></label>
+                        <input type="email" name="txtEmail2" id="txtEmail2" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtEntrevistado">
+                            <b>Nombre Entrevistado:</b></label>
+                        <input type="text" name="txtEntrevistado" id="txtEntrevistado" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtCargoEntrevistado">
+                            <b>Relaci&oacute;n Cargo:</b></label>
+                        <input type="text" name="txtCargoEntrevistado" id="txtCargoEntrevistado" value="" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtObsInspector">
+                            <b>Observacion Inspector:</b></label>
+                        <textarea name="txtObsInspector" id="txtObsInspector" value=""></textarea>
+                    </div>
+                </li>
+            </ul>
+            <ul data-role="listview">
+                <li data-role="list-divider">Descripci&oacute;n de los hechos</li>
+                <li>
+                    <textarea name="txtDescripcionHecho" id="txtDescripcionHecho"></textarea>
+                    <div data-role="fieldcontain">
+                        <label for="txtDescripcionInspector">
+                            <b>Observacion Inspector:</b></label>
+                        <textarea name="txtDescripcionInspector" id="txtDescripcionInspector" value=""></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="window.history.back();" id="" data-icon="arrow-l">
+                        Atras</a></li>
+                    <li><a href="#" id="" onclick="document.location.href='#paginaOrigenSiniestro'" data-icon="arrow-r">
+                        Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaOrigenSiniestro">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Origen del Siniestro</li>
+                <li>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-1" value="incendio"
+                                checked="checked" />
+                            <label for="rbOrigenSiniestro-1">
+                                Incendio</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-2" value="cañeria" />
+                            <label for="rbOrigenSiniestro-2">
+                                Ca&ntilde;eria</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-3" value="vientoOLluvia" />
+                            <label for="rbOrigenSiniestro-3">
+                                Viento o Lluvia</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-4" value="golpeOCaida" />
+                            <label for="rbOrigenSiniestro-4">
+                                Golpe o Caida</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-5" value="accidenteElectrico" />
+                            <label for="rbOrigenSiniestro-5">
+                                Accidente El&eacute;ctrico</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-6" value="robo" />
+                            <label for="rbOrigenSiniestro-6">
+                                Robo</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOrigenSiniestro-7" value="asalto" />
+                            <label for="rbOrigenSiniestro-7">
+                                Asalto</label>
+                            <input type="radio" name="rbOrigenSiniestro" id="rbOtrosOrigenSiniestro" value="otros" class="custom" />
+                            <label for="rbOtrosOrigenSiniestro">
+                                Otros
+                            </label>
+                            <div data-role="fieldcontain">
+                                <label for="txtObservacionOrigenSiniestro">Observación:</label>
+                                <input type="text" name="txtObservacionOrigenSiniestro" id="txtObservacionOrigenSiniestro" value=""  />
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="txtObsInspectorSiniestro">
+                            <b>Observacion Inspector</b></label>
+                        <textarea name="txtObsInspectorSiniestro" id="txtObsInspectorSiniestro" value=""></textarea>
+                    </div>
+                    <label for="ObservacionSiniestro">
+                        <b>Observaciones del Siniestro</b></label>
+                    <textarea name="ObservacionSiniestro" id="ObservacionSiniestro"></textarea>
+                </li>
+            </ul>
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="window.history.back();" id=""
+                        data-icon="arrow-l">Atras</a></li>
+                    <li><a href="#" onclick="validarOtrosOrigen();" id="" data-icon="arrow-r">
+                        Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaFotoSiniestro">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Adjuntar fotos del Siniestro</li>
+                <li>
+                    <div data-role="fieldcontain">
+                        <label for="txtObsInspectorSiniestroFoto">
+                            <b>Observacion Inspector</b></label>
+                        <textarea name="txtObsInspectorSiniestroFoto" id="txtObsInspectorSiniestroFoto" value=""></textarea>
+                    </div>
+                </li>
+            </ul>
+            <br>
+            <a href="#" data-role="button" data-inline="true">Tomar Foto</a>
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="window.history.back();"  id="" data-icon="arrow-l">Atras</a></li>
+                    <li><a href="#" onclick="document.location.href='#paginaDescripcionRiesgo'" id=""
+                        data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaDescripcionRiesgo">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Descripción del riesgo asegurado</li>
+                <li>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-1" value="casa"
+                                checked="checked" />
+                            <label for="rbDescripcionRiesgo-1">
+                                Casa</label>
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-2" value="departamento" />
+                            <label for="rbDescripcionRiesgo-2">
+                                Departamento</label>
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-3" value="oficina" />
+                            <label for="rbDescripcionRiesgo-3">
+                                Oficina</label>
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-4" value="edificio" />
+                            <label for="rbDescripcionRiesgo-4">
+                                Edificio</label>
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-5" value="localcomercial" />
+                            <label for="rbDescripcionRiesgo-5">
+                                Local Comercial</label>
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-6" value="IndustriaFabrica" />
+                            <label for="rbDescripcionRiesgo-6">
+                                Industria/Fábrica</label>
+                            <input type="radio" name="rbDescripcionRiesgo" id="rbDescripcionRiesgo-7" value="Otros" />
+                            <label for="rbDescripcionRiesgo-7">
+                                Otros
+                            </label>
+                            <div data-role="fieldcontain">
+                                <label for="txtObservacionRiesgosAsegurado">Observación:</label>
+                                <input type="text" name="txtObservacionRiesgosAsegurado" id="txtObservacionRiesgosAsegurado" value=""  />
+                            </div>
+                        </fieldset>
+                    </div>
+                    <label for="txtAntiguedad">
+                        <b>Antigüedad:</b></label>
+                    <input type="text" name="txtAntiguedad" id="txtAntiguedad" value="" />
+                    <label for="txtSuperficie">
+                        <b>Superficie:</b></label>
+                    <input type="text" name="txtSuperficie" id="txtSuperficie" value="" />
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <input type="radio" name="rblugar" id="rblugar-1" value="piso" />
+                            <label for="rblugar-1">
+                                Piso</label>
+                            <input type="radio" name="rblugar" id="rblugar-2" value="subterraneo" />
+                            <label for="rblugar-2">
+                                Subterraneo</label>
+                        </fieldset>
+                        <input type="text" name="txtDescripcionRiesgo" id="txtDescripcionRiesgo" value="" />
+                        <div data-role="fieldcontain">
+                            <label for="txtObsRiesgoAsegurado">
+                                <b>Observacion Inspector</b></label>
+                            <textarea name="txtObsRiesgoAsegurado" id="txtObsRiesgoAsegurado" value=""></textarea>
+                        </div>
+                    </div>
+                </li>
+                <li data-role="list-divider">Descripción de materia asegurada</li>
+                <li>
+                    <textarea name="txtMateriaAsegurada" id="txtMateriaAsegurada" value=""></textarea>
+                    <div data-role="fieldcontain">
+                        <label for="txtObsMateriaAsegurada">
+                            <b>Observacion Inspector</b></label>
+                        <textarea name="txtObsMateriaAsegurada" id="txtObsMateriaAsegurada" value=""></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="window.history.back();" id="" data-icon="arrow-l">Atras</a></li>
+                    <li><a href="#" onclick="validarOtrosRiesgoAsegurado();" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaMaterialidadAsegurado">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Materialidad del riesgo asegurado</li>
+                <li>
+                	<table style="width: 100%">
+                    <tr>
+                    <td valign="top" style="width: 100%;">
+                    <div>
+                        <fieldset data-role="controlgroup">
+                            <legend>Perimetrales</legend>
+                            <input type="checkbox" name="chkHormigonArmado" id="chkHormigonArmado" class="custom" />
+                            <label for="chkHormigonArmado">
+                                Hormigon Armado
+                            </label>
+                            <input type="checkbox" name="chkAlbanileriaReforzada" id="chkAlbanileriaReforzada" class="custom" />
+                            <label for="chkAlbanileriaReforzada">
+                                Albañileria Reforzada
+                            </label>
+                            <input type="checkbox" name="chkAlbanileriaBloque" id="chkAlbanileriaBloque" class="custom" />
+                            <label for="chkAlbanileriaBloque">
+                                Albañileria Bloque
+                            </label>
+                            <input type="checkbox" name="chkAdobe" id="chkAdobe" class="custom" />
+                            <label for="chkAdobe">
+                                Adobe Tendido
+                            </label>
+                            <input type="checkbox" name="chkEstructuraMadera" id="chkEstructuraMadera" class="custom" />
+                            <label for="chkEstructuraMadera">
+                                Estructura Madera
+                            </label>
+                            <input type="checkbox" name="chkEstructuraMetalica" id="chkEstructuraMetalica" class="custom" />
+                            <label for="chkEstructuraMetalica">
+                                Estructura Metalica
+                            </label>
+                            <input type="checkbox" name="chkEstructuraPVC" id="chkEstructuraPVC" class="custom" />
+                            <label for="chkEstructuraPVC">
+                                Estructura PVC
+                            </label>
+                            <input type="checkbox" name="chkOtrosPerimetrales" id="chkOtrosPerimetrales" class="custom" />
+                            <label for="chkOtrosPerimetrales">
+                                Otros
+                            </label>
+                            <div data-role="fieldcontain">
+                                <label for="txtObservacionPerimetrales">Observación:</label>
+                                <input type="text" name="txtObservacionPerimetrales" id="txtObservacionPerimetrales" value=""  />
+                            </div>
+                        </fieldset>
+                    </div>
+                    </td>
+                    <td valign="top">
+                    <div style="width: 10%">
+                        <fieldset data-role="controlgroup" >
+                        	<legend>Interiores</legend>
+                            <input type="checkbox" name="chkHormigonArmadoInterior" id="chkHormigonArmadoInterior" class="custom" />
+                            <label for="chkHormigonArmadoInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkAlbanileriaReforzadaInterior" id="chkAlbanileriaReforzadaInterior" class="custom" />
+                            <label for="chkAlbanileriaReforzadaInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkAlbanileriaBloqueInterior" id="chkAlbanileriaBloqueInterior" class="custom" />
+                            <label for="chkAlbanileriaBloqueInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkAdobeInterior" id="chkAdobeInterior" class="custom" />
+                            <label for="chkAdobeInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkEstructuraMaderaInterior" id="chkEstructuraMaderaInterior" class="custom" />
+                            <label for="chkEstructuraMaderaInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkEstructuraMetalicaInterior" id="chkEstructuraMetalicaInterior" class="custom" />
+                            <label for="chkEstructuraMetalicaInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkEstructuraPVCInterior" id="chkEstructuraPVCInterior" class="custom" />
+                            <label for="chkEstructuraPVCInterior">
+                                &nbsp;
+                            </label>
+                            <input type="checkbox" name="chkOtrosPerimetralesInterior" id="chkOtrosPerimetralesInterior" class="custom" />
+                            <label for="chkOtrosPerimetralesInterior">
+                                &nbsp;
+                            </label>
+                        </fieldset>
+                    </div>                	                                          
+                    </td>
+                    </tr>
+                    </table>
+                	<fieldset data-role="controlgroup">
+                        <legend>Cubierta de Techumbres</legend>
+                        <input type="checkbox" name="chkZincEmballetado" id="chkZincEmballetado" class="custom" />
+                        <label for="chkZincEmballetado">
+                            Zinc Emballetado
+                        </label>
+                        <input type="checkbox" name="chkZincOndulado" id="chkZincOndulado" class="custom" />
+                        <label for="chkZincOndulado">
+                            Zinc Ondulado
+                        </label>
+                        <input type="checkbox" name="chkPizarreñoGranOnda" id="chkPizarreñoGranOnda" class="custom" />
+                        <label for="chkPizarreñoGranOnda">
+                            Pizarreño Gran Onda
+                        </label>
+                        <input type="checkbox" name="chkTejaChileArcilla" id="chkTejaChileArcilla" class="custom" />
+                        <label for="chkTejaChileArcilla">
+                            Teja Chile Arcilla
+                        </label>
+                        <input type="checkbox" name="chkTejaFibraCemento" id="chkTejaFibraCemento" class="custom" />
+                        <label for="chkTejaFibraCemento">
+                            Teja Fibra Cemento
+                        </label>
+                        <input type="checkbox" name="chkTejuelaAsfaltica" id="chkTejuelaAsfaltica" class="custom" />
+                        <label for="chkTejuelaAsfaltica">
+                            Tejuela Asfáltica
+                        </label>
+                        <input type="checkbox" name="chkFibraVidrio" id="chkFibraVidrio" class="custom" />
+                        <label for="chkFibraVidrio">
+                            Fibra de Vidrio
+                        </label>
+                        <input type="checkbox" name="chkOtrosCubierta" id="chkOtrosCubierta" class="custom" />
+                        <label for="chkOtrosCubierta">
+                            Otros
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtObservacionCubierta">Observación:</label>
+                            <input type="text" name="txtObservacionCubierta" id="txtObservacionCubierta" value=""  />                        </div>
+                        <label for="txtCorresponPerimetrales">*Cuadro de texto correspondiente a Perimetrales:</label>
+                        <input type="text" name="txtCorresponPerimetrales" id="txtCorresponPerimetrales" value=""  />
+                        <label for="txtCorresponInteriores">*Cuadro de texto correspondiente a Interiores:</label>
+                        <input type="text" name="txtCorresponInteriores" id="txtCorresponInteriores" value=""  />
+                    </fieldset> 
+                </li>
+        	</ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#" onclick="validarOtrosMaterialidadAsegurado();" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaPavimentosInteriores">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Pavimentos y Cielos</li>
+                <li>
+                	<fieldset data-role="controlgroup">
+                        <legend>Pavimentos Interiores</legend>
+                        <input type="checkbox" name="chkRadierHormigon" id="chkRadierHormigon" class="custom" />
+                        <label for="chkRadierHormigon">
+                            Radier Hormigón
+                        </label>
+                        <input type="checkbox" name="chkCeramica" id="chkCeramica" class="custom" />
+                        <label for="chkCeramica">
+                            Cerámica
+                        </label>
+                        <input type="checkbox" name="chkEntabladosMadera" id="chkEntabladosMadera" class="custom" />
+                        <label for="chkEntabladosMadera">
+                            Entablados Madera
+                        </label>
+                        <input type="checkbox" name="chkLaminadosFlotante" id="chkLaminadosFlotante" class="custom" />
+                        <label for="chkLaminadosFlotante">
+                            Laminados Flotante
+                        </label>
+                        <input type="checkbox" name="chkPlasticosFlexit" id="chkPlasticosFlexit" class="custom" />
+                        <label for="chkPlasticosFlexit">
+                            Plásticos Flexit
+                        </label>
+                        <input type="checkbox" name="chkBaldosasMicrovibradas" id="chkBaldosasMicrovibradas" class="custom" />
+                        <label for="chkBaldosasMicrovibradas">
+                            Baldosas Microvibradas
+                        </label>
+                        <input type="checkbox" name="chkAlfombraCubrePiso" id="chkAlfombraCubrePiso" class="custom" />
+                        <label for="chkAlfombraCubrePiso">
+                            Alfombra - Cubre Piso
+                        </label>
+                        <input type="checkbox" name="chkOtrosPavimentos" id="chkOtrosPavimentos" class="custom" />
+                        <label for="chkOtrosPavimentos">
+                            Otros
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtObservacionPavimentos">Observación:</label>
+                            <input type="text" name="txtObservacionPavimentos" id="txtObservacionPavimentos" value=""  />
+                        </div>
+                    </fieldset> 
+                    <fieldset data-role="controlgroup">
+                        <legend>Cielos Interiores</legend>
+                        <input type="checkbox" name="chkLosaHormigon" id="chkLosaHormigon" class="custom" />
+                        <label for="chkLosaHormigon">
+                            Losa Hormigón
+                        </label>
+                        <input type="checkbox" name="chkVolcanitaYesoCarton" id="chkVolcanitaYesoCarton" class="custom" />
+                        <label for="chkVolcanitaYesoCarton">
+                            Volcanita Yeso Cartón
+                        </label>
+                        <input type="checkbox" name="chkEntabladoMaderaCielos" id="chkEntabladoMaderaCielos" class="custom" />
+                        <label for="chkEntabladoMaderaCielos">
+                            Entablados Madera
+                        </label>
+                        <input type="checkbox" name="chkMaderaAglomerada" id="chkMaderaAglomerada" class="custom" />
+                        <label for="chkMaderaAglomerada">
+                            Madera Aglomerada
+                        </label>
+                        <input type="checkbox" name="chksuperBoardInternit" id="chksuperBoardInternit" class="custom" />
+                        <label for="chksuperBoardInternit">
+                            Superboard Internit
+                        </label>
+                        <input type="checkbox" name="chkFibraMineralModular" id="chkFibraMineralModular" class="custom" />
+                        <label for="chkFibraMineralModular">
+                            Fibra Mineral Modular
+                        </label>
+                        <input type="checkbox" name="chkMinicelCelotec" id="chkMinicelCelotec" class="custom" />
+                        <label for="chkMinicelCelotec">
+                            Minicel - Celotec
+                        </label>
+                        <input type="checkbox" name="chkOtrosCielos" id="chkOtrosCielos" class="custom" />
+                        <label for="chkOtrosCielos">
+                            Otros
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtObservacionCielos">Observación:</label>
+                            <input type="text" name="txtObservacionCielos" id="txtObservacionCielos" value=""  />
+                        </div>
+                    </fieldset>
+                </li>
+        	</ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#" onclick="validarOtrosPavimentoCielo();" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <!--page-->
+    <div data-role="page" id="paginaTerminaciones">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Terminaciones y Otras instalaciones</li>
+                <li>
+                	<fieldset data-role="controlgroup">
+                        <legend>Terminaciones Interiores</legend>
+                        <input type="checkbox" name="chkPapelMural" id="chkPapelMural" class="custom" />
+                        <label for="chkPapelMural">
+                            Papel Mural
+                        </label>
+                        <input type="checkbox" name="chkPapelNiloneo" id="chkPapelNiloneo" class="custom" />
+                        <label for="chkPapelNiloneo">
+                            Papel Niloneo
+                        </label>
+                        <input type="checkbox" name="chkPinturaLatex" id="chkPinturaLatex" class="custom" />
+                        <label for="chkPinturaLatex">
+                            Pintura Latex
+                        </label>
+                        <input type="checkbox" name="chkPinturaOleo" id="chkPinturaOleo" class="custom" />
+                        <label for="chkPinturaOleo">
+                            Pintura Óleo
+                        </label>
+                        <input type="checkbox" name="chkEsmalteAgua" id="chkEsmalteAgua" class="custom" />
+                        <label for="chkEsmalteAgua">
+                            Pintura Esmalte Agua
+                        </label>
+                        <input type="checkbox" name="chkBarnizMarino" id="chkBarnizMarino" class="custom" />
+                        <label for="chkBarnizMarino">
+                            Barniz Marino
+                        </label>
+                        <input type="checkbox" name="chkCeramicasInteriores" id="chkCeramicasInteriores" class="custom" />
+                        <label for="chkCeramicasInteriores">
+                            Cerámicas
+                        </label>
+                        <input type="checkbox" name="chkOtrosInteriores" id="chkOtrosInteriores" class="custom" />
+                        <label for="chkOtrosInteriores">
+                            Otros
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtObservacionInteriore">Observación:</label>
+                            <input type="text" name="txtObservacionInteriore" id="txtObservacionInteriore" value=""  />
+                        </div>
+                    </fieldset>
+                    <fieldset data-role="controlgroup">
+                        <legend>Otras Instalaciones</legend>
+                        <input type="checkbox" name="chRejaPerimetral" id="chRejaPerimetral" class="custom" />
+                        <label for="chRejaPerimetral">
+                            Reja Perimetral
+                        </label>
+                        <input type="checkbox" name="chkPiscina" id="chkPiscina" class="custom" />
+                        <label for="chkPiscina">
+                            Piscina
+                        </label>
+                        <input type="checkbox" name="chkTerraza" id="chkTerraza" class="custom" />
+                        <label for="chkTerraza">
+                            Terraza
+                        </label>
+                        <input type="checkbox" name="chkRiegoAutomatico" id="chkRiegoAutomatico" class="custom" />
+                        <label for="chkRiegoAutomatico">
+                            Riego Automático
+                        </label>
+                        <input type="checkbox" name="chkQuincho" id="chkQuincho" class="custom" />
+                        <label for="chkQuincho">
+                            Quincho
+                        </label>
+                        <input type="checkbox" name="chkPergolas" id="chkPergolas" class="custom" />
+                        <label for="chkPergolas">
+                            Pérgolas
+                        </label>
+                        <input type="checkbox" name="chkMuroContencion" id="chkMuroContencion" class="custom" />
+                        <label for="chkMuroContencion">
+                            Muro Contención
+                        </label>
+                        <input type="checkbox" name="chkOtrosInstalaciones" id="chkOtrosInstalaciones" class="custom" />
+                        <label for="chkOtrosInstalaciones">
+                            Otros
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtObservacionInstalaciones">Observación:</label>
+                            <input type="text" name="txtObservacionInstalaciones" id="txtObservacionInstalaciones" value=""  />
+                        </div>
+                    </fieldset>
+                    <label for="txtObservacionInspector">Observación Inspector</label>
+                    <textarea name="txtObservacionInspector" id="txtObservacionInspector">
+                    </textarea>
+                </li>
+        	</ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#paginaMedidasRobo" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaMedidasRobo">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Medidas de seguridad por robo</li>
+                <li>
+                	<fieldset data-role="controlgroup">
+                        <input type="checkbox" name="chkCondominioCerrado" id="chkCondominioCerrado" class="custom" />
+                        <label for="chkCondominioCerrado">
+                            Condominio cerrado
+                        </label>
+                        <input type="checkbox" name="chkGuardia24hrs" id="chkGuardia24hrs" class="custom" />
+                        <label for="chkGuardia24hrs">
+                            Guardia 24 hrs.
+                        </label>
+                        <input type="checkbox" name="chkGuardiasExternos" id="chkGuardiasExternos" class="custom" />
+                        <label for="chkGuardiasExternos">
+                            Guardias externos
+                        </label>
+                        <input type="checkbox" name="ChapasDeSeguridad" id="ChapasDeSeguridad" class="custom" />
+                        <label for="ChapasDeSeguridad">
+                            Chapas de seguridad
+                        </label>
+                        <input type="checkbox" name="chkProteccionesMetalicas" id="chkProteccionesMetalicas" class="custom" />
+                        <label for="chkProteccionesMetalicas">
+                            Protecciones metalicas
+                        </label>
+                        <input type="checkbox" name="chkTodasVentanasPrimerPiso" id="chkTodasVentanasPrimerPiso" class="custom" />
+                        <label for="chkTodasVentanasPrimerPiso">
+                            Todas las ventanas del primer piso
+                        </label>
+                        <input type="checkbox" name="chkConexionACentral" id="chkConexionACentral" class="custom" />
+                        <label for="chkConexionACentral">
+                            Conexion a central
+                        </label>
+                        <input type="checkbox" name="chkGuardiaEnAcceso" id="chkGuardiaEnAcceso" class="custom" />
+                        <label for="chkGuardiaEnAcceso">
+                            Guardia en acceso
+                        </label>
+                        <input type="checkbox" name="chkRonda24hrs" id="chkRonda24hrs" class="custom" />
+                        <label for="chkRonda24hrs">
+                            Ronda 24 hrs.
+                        </label>
+                        <input type="checkbox" name="chkCamarasSeguridadCondominio" id="chkCamarasSeguridadCondominio" class="custom" />
+                        <label for="chkCamarasSeguridadCondominio">
+                            Cámaras de seguridad en condominio
+                        </label>
+                        <input type="checkbox" name="chkTodasLasPuertasExterior" id="chkTodasLasPuertasExterior" class="custom" />
+                        <label for="chkTodasLasPuertasExterior">
+                            Todas las puertas al exterior
+                        </label>
+                        <input type="checkbox" name="chkTodasLasVentanas" id="chkTodasLasVentanas" class="custom" />
+                        <label for="chkTodasLasVentanas">
+                            Todas las ventanas
+                        </label>
+                        <input type="checkbox" name="chkAlarma" id="chkAlarma" class="custom" />
+                        <label for="chkAlarma">
+                            Alarma
+                        </label>
+                        <input type="checkbox" name="chkTelefono" id="chkTelefono" class="custom" />
+                        <label for="chkTelefono">
+                            Teléfono
+                        </label>
+                        <input type="checkbox" name="chkControlDeAcceso" id="chkControlDeAcceso" class="custom" />
+                        <label for="chkControlDeAcceso">
+                            Control de acceso
+                        </label>
+                        <input type="checkbox" name="chkGuardiasPropios" id="chkGuardiasPropios" class="custom" />
+                        <label for="chkGuardiasPropios">
+                            Guardias propios
+                        </label>
+                        <input type="checkbox" name="chkSoloAlgunasPuertas" id="chkSoloAlgunasPuertas" class="custom" />
+                        <label for="chkSoloAlgunasPuertas">
+                            Sólo algunas puertas
+                        </label>
+                        <input type="checkbox" name="chkSoloAlgunasVentanas" id="chkSoloAlgunasVentanas" class="custom" />
+                        <label for="chkSoloAlgunasVentanas">
+                            Sólo algunas ventanas
+                        </label>
+                        <input type="checkbox" name="chkSirenaOBaliza" id="chkSirenaOBaliza" class="custom" />
+                        <label for="chkSirenaOBaliza">
+                            Local con sirena y/o baliza
+                        </label>
+                        <input type="checkbox" name="chkViaRadial" id="chkViaRadial" class="custom" />
+                        <label for="chkViaRadial">
+                            Via radial
+                        </label>
+                        <input type="checkbox" name="chkOtrosMedidasSeguridad" id="chkOtrosMedidasSeguridad" class="custom" />
+                        <label for="chkOtrosMedidasSeguridad">
+                            Otros
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtObservacionMedidasSeguridad">Observación:</label>
+                            <input type="text" name="txtObservacionMedidasSeguridad" id="txtObservacionMedidasSeguridad" value=""  />
+                        </div>
+                    </fieldset>
+                    <label for="txtObservacionInspectorMedidasSeguridad">Observación Inspector</label>
+                    <textarea name="txtObservacionInspectorMedidasSeguridad" id="txtObservacionInspectorMedidasSeguridad">
+                    </textarea>
+                </li>
+        	</ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#paginaAntecedentesPoliciales" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <!--page-->
+    <div data-role="page" id="paginaAntecedentesPoliciales">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Antecedentes policiales / judiciales / bomberos</li>
+                <li>
+                	<label for="txtCarabineros">Carabineros</label>
+                	<input type="text" id="txtCarabineros" name="txtCarabineros" text=""/>
+                    <label for="txtInvestigaciones">Investigaciones</label>
+                	<input type="text" id="txtInvestigaciones" name="txtInvestigaciones" text=""/>
+                    <label for="txtDia">Día</label>
+					<input type="date" data-role="datebox" id="txtDia" name="txtDia" data-options='{"mode": "flipbox"}' value=""  />		
+                    <label for="txtConstancia">Constancia</label>
+					<input type="text" name="txtConstancia" id="txtConstancia" value=""  />		
+                    <label for="txtParte">Parte</label>
+					<input type="text" name="txtParte" id="txtParte" value=""  />		
+					<label for="txtFiscalia">Fiscalía</label>
+					<input type="text" name="txtFiscalia" id="txtFiscalia" value=""  />		
+					<label for="txtRUC">R.U.C</label>
+					<input type="text" name="txtRUC" id="txtRUC" value=""  />		
+					<label for="txtBomberos">Bomberos</label>
+					<input type="text" name="txtBomberos" id="txtBomberos" value=""  />		
+                    </fieldset>
+                    <label for="txtObservacionInspectorAntecedentes">Observación Inspector</label>
+                    <textarea name="txtObservacionInspectorAntecedentes" id="txtObservacionInspectorAntecedentes"></textarea>
+                    
+                </li>
+        		<li data-role="list-divider">Notificación</li>
+                <li>
+                	<div>Por medio de la presente informamos a ustedes nuestra designación formal por parte de la compañía Aseguradora para la atención del presente caso.
+                    </div>
+                    <br/>
+                	<div>A continuación pasamos a detallar los antecedentes que preliminarmente será necesario nos haga llegar a nuestra oficina para el análisis del siniestro. Esta solicitud es sin prejuicio de las restricciones y/o otras particularidades de la póliza que nos encontremos analizando. Cualquier información adicional que pudiéramos requerir le será oportunamente comunicada.</div>
+                    <div>Los Restos de los bienes dañados con motivo del presente siniestro deben ser conservados y debidamente resguardados por usted, no pudiendo deshacerse de ellos, salvo una autorización escrita de este Liquidador o de la compañía de seguros en tal sentido.</div>
+                    <br/>
+                    <label for="txtObservacionInspectorAntecedentes2">Observación Inspector</label>
+                    <textarea name="txtObservacionInspectorAntecedentes2" id="txtObservacionInspectorAntecedentes2"></textarea>
+                    
+                </li>
+            </ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#paginaSolicitudPreliminar" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <!--page-->
+    <div data-role="page" id="paginaSolicitudPreliminar">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Solicitud preliminar de antecedentes</li>
+                <li>
+                	<div>Relación circunstanciada de los hechos.</div>
+                    <br/>
+                	<fieldset data-role="controlgroup">
+                        <input type="checkbox" name="chkDatos1" id="chkDatos1" class="custom" />
+                        <label for="chkDatos1">
+                            Datos completos del parte policial (unidad, fecha, numero parte, fiscalía)
+                        </label>
+                        <input type="checkbox" name="chkDatos2" id="chkDatos2" class="custom" />
+                        <label for="chkDatos2">
+                            Reporte de evento de la empresa de alarma, para el Período comprendido entre 3 días antes y después del robo.
+                        </label>
+                        <input type="checkbox" name="chkDatos3" id="chkDatos3" class="custom" />
+                        <label for="chkDatos3">
+                            Detalle de artículos robados, acompañando e identificando para cada uno: copia de factura, boleta, manual o garantía que permita estableer su antigüedad y características técnicas, De no contar con tales documentos debe ratificarlo por escrito y señalar marca, modelo, características técnicas y fecha aproximada de adquisición (mes y/o año). Hacemos notar que todas las especies reclamadas deben constar en los antecedentes policiales y/o judiciales. Caso contrario debe preceder a efectuar la ampliación de denuncia respectiva en la Fiscalia y remitirnos copia de ésta.
+                        </label>
+                        <input type="checkbox" name="chkDatos4" id="chkDatos4" class="custom" />
+                        <label for="chkDatos4">
+                            Detalle de artículos dañados, acompañando e identificando para cada uno el informe de origne y extensión de los daños emitido formalmente por un servicio técnico autorizado y el respectivo presupuesto de reparación. En caso que el artículo no sea reparable, el informe debe consignarlo.
+                        </label>
+                        <input type="checkbox" name="chkDatos5" id="chkDatos5" class="custom" />
+                        <label for="chkDatos5">
+                            Cotización de reposición a nuevo por un artículo igual o similar al robado, emitida formalmente por el proveedor o establecimiento comercial consultado, o bien impreso obtenido vía Internet.
+                        </label>
+                        <input type="checkbox" name="chkDatos6" id="chkDatos6" class="custom" />
+                        <label for="chkDatos6">
+                            Presupuesto de reparación por los daños a la construcción, debidamente desglosado (recinto, partida, unidad, cantidad, valor materiales y mano de obra por separado) unitario.
+                        </label>
+                        <input type="checkbox" name="chkConexionACentral" id="chkConexionACentral" class="custom" />
+                        <label for="chkConexionACentral">
+                            Declaración jurada simple (no notarial) respecto a la concurrencia de otros seguros sobre la misma materia.
+                        </label>
+                        <div data-role="fieldcontain">
+                            <label for="txtOtrosSolicitudPreliminar">Otros:</label>
+                            <input type="text" name="txtOtrosSolicitudPreliminar" id="txtOtrosSolicitudPreliminar" value=""  />
+                        </div>
+                        <label for="txtObservacionSolicitudPreliminar">Observación Inspector</label>
+                    	<textarea name="txtObservacionSolicitudPreliminar" id="txtObservacionSolicitudPreliminar"></textarea>
+                    </fieldset>
+                </li>
+            </ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#paginaAnalistaCaso" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <!--page-->
+    <div data-role="page" id="paginaAnalistaCaso">
+        <div data-role="header" data-theme="a">
+            <h3>
+                Inspecciones</h3>
+            <a href="#paginaseg" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Menu</a>
+        </div>
+        <!-- header -->
+        <div data-role="content">
+            <br>
+            <ul data-role="listview">
+                <li data-role="list-divider">Analista del caso</li>
+                <li>
+                	<div>Para la atención del presente siniestro el liquidador que llevará el proceso será:</div>
+                    <br/>                	
+                
+                    <label for="txtNombreAnalistaCaso">Nombre</label>
+                    <input type="text" name="txtNombreAnalistaCaso" id="txtNombreAnalistaCaso" value=""  />
+                    <label for="txtMailAnalistaCaso">E-Mail</label>
+                    <input type="email" name="txtMailAnalistaCaso" id="txtMailAnalistaCaso" value=""  />
+                    <label for="txtFonoAnalistaCaso">Fono / Fax</label>
+                    <input type="tel" name="txtFonoAnalistaCaso" id="txtFonoAnalistaCaso" value=""  />
+                    <label for="txtDireccionAnalistaCaso">Dirección</label>
+                    <input type="text" name="txtDireccionAnalistaCaso" id="txtDireccionAnalistaCaso" value=""  />
+                    <label for="txtObservacionAnalistaCaso">Observación Inspector</label>
+                    <textarea name="txtObservacionAnalistaCaso" id="txtObservacionAnalistaCaso"></textarea>
+                </li>
+            </ul>	
+        </div>
+        <!--content-->
+        <div data-role="footer" data-position="fixed" id="id__" class="">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atrás</a></li>
+                    <li><a href="#paginaDetalleDanniosPerdidasEdificio" id="" data-icon="arrow-r">Siguiente</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!--page-->
+    <div data-role="page" id="paginaDetalleDanniosPerdidasEdificio">
+	<div data-role="header" data-theme="a" >
+   
+			<h3>Inspecciones</h3>
+			<a href="#paginaseg" data-icon="grid" data-iconpos="notext"  class="ui-btn-right">Menu</a>
+      
+	</div><!-- header -->
+	
+    <div  data-role="content"   >
+       <br>
+       <ul data-role="listview" >
+           <li data-role="list-divider">Detalle de Daños y Perdidas (Edificio)</li>
+           <li>* Los datos requeridos en esta página no son obligatorios</li>
+           <li>
+             <div data-role="content" align="right">
+               <a href="#" data-role="button" data-inline="true">(+)Fila</a>
+             </div>
+           </li>
+           
+           <li>
+             <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>Detalle</td>
+                  <td>Marca</td>
+                  <td>Modelo</td>
+                  <td>N° Especie</td>
+                  <td>Fecha Compra</td>
+                  <td>% Perdida o daño</td>
+                </tr>
+             </table>
+           </li>
+           
+           <li>   
+             <div data-role="fieldcontain">          
+               <label for="txtObservacionDannioPerdida">Observación Inspector</label>
+               <textarea name="txtObservacionDannioPerdida" id="txtObservacionDannioPerdida"></textarea> 
+             </div>            
+           </li>
+       </ul>
+       
+    </div><!--content-->  
+    <div data-role="footer" data-position="fixed"  id="id__" class="">		
+	  <div data-role="navbar"   data-iconpos="left">
+		<ul>
+			<li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atras</a></li>
+			<li><a href="#paginaDetalleDanniosPerdidasContenido" id="" data-icon="arrow-r">Siguiente</a></li>
+		</ul>
+	  </div><!-- /navbar -->
+    </div><!-- /footer --> 
+  </div><!--page-->
+  
+  <div data-role="page" id="paginaDetalleDanniosPerdidasContenido">
+	<div data-role="header" data-theme="a" >
+   
+			<h3>Inspecciones</h3>
+			<a href="#paginaseg" data-icon="grid" data-iconpos="notext"  class="ui-btn-right">Menu</a>
+      
+	</div><!-- header -->
+	
+    <div  data-role="content"   >
+       <br>
+       <ul data-role="listview" >
+           <li data-role="list-divider">Detalle de Daños y Perdidas (Contenido)</li>
+           <li>* Los datos requeridos en esta página no son obligatorios</li>
+           <li>
+             <div data-role="content" align="right">
+               <a href="#" data-role="button" data-inline="true">(+)Fila</a>
+             </div>
+           </li>
+           
+           <li>
+             <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>Detalle</td>
+                  <td>Marca</td>
+                  <td>Modelo</td>
+                  <td>N° Especie</td>
+                  <td>Fecha Compra</td>
+                  <td>% Perdida o daño</td>
+                </tr>
+             </table>
+           </li>
+           
+           <li>   
+             <div data-role="fieldcontain">          
+               <label for="txtObservacionDannioPerdidaContenido">Observación Inspector</label>
+               <textarea name="txtObservacionDannioPerdidaContenido" id="txtObservacionDannioPerdidaContenido"></textarea> 
+             </div>            
+           </li>
+       </ul>
+       
+    </div><!--content-->  
+    <div data-role="footer" data-position="fixed"  id="id__" class="">		
+	  <div data-role="navbar"   data-iconpos="left">
+		<ul>
+			<li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atras</a></li>
+			<li><a href="#paginaPresupuesto" id="" data-icon="arrow-r">Siguiente</a></li>
+		</ul>
+	  </div><!-- /navbar -->
+    </div><!-- /footer --> 
+  </div><!--page-->
+   
+  <div data-role="page" id="paginaPresupuesto">
+	<div data-role="header" data-theme="a" >
+   
+			<h3>Inspecciones</h3>
+			<a href="#paginaseg" data-icon="grid" data-iconpos="notext"  class="ui-btn-right">Menu</a>
+      
+	</div><!-- header -->
+	
+    <div  data-role="content"   >
+       <br>
+       <ul data-role="listview" >
+           <li data-role="list-divider">Presupuesto</li>
+           <li>* Los datos requeridos en esta página no son obligatorios</li>
+           <li>
+             <fieldset data-role="controlgroup" data-type="horizontal">
+                 <label for="slcItem1" class="select">Item 1</label>
+                <select name="slcItem1" id="slcItem11" data-native-menu="false">
+                   <option value="Arriendos">Arriendos</option>
+                </select>
+                &nbsp;&nbsp;
+                <label for="slcItem2" class="select">Item 2</label>
+                <select name="slcItem2" id="slcItem12" data-native-menu="false">
+                   <option value="Admmios">Admmios</option>
+                </select>
+              </fieldset>
+              
+              <fieldset data-role="content" data-type="horizontal">
+                 <label for="itemcantidad" class="select">Cantidad</label>
+                 <input type="text" name="itemcantidad" id="itemcantidad" value=""  />
+                
+                <label for="itemDepreciacion" class="select">% Depreciación</label>
+                <input type="text" name="itemDepreciacion" id="itemDepreciacion" value=""  />
+              </fieldset>
+              <div data-role="content" align="center">
+               <a href="#" data-role="button" data-inline="true">(+)Fila</a>
+               <a href="#" data-role="button" data-inline="true">Total</a>               
+             </div>    
+             <li>
+             <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>Eliminar</td>
+                  <td>Items</td>
+                  <td>Unidad</td>
+                  <td>Valor</td>
+                  <td>Cant.</td>
+                  <td>Total</td>
+                  <td>% Deprec.</td>
+                  <td>Total Depre.</td>
+                </tr>
+             </table>             
+             </li> 
+             <li>
+             <table width="60%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>Total</td>
+                  <td>Provision</td>
+                  <td>Total General</td>
+                  <td>Uf</td>
+                  <td>Mto. Aseg.</td>
+                </tr>
+             </table>
+             </li>
+             <li>             
+             <table width="40%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>Tope del Mto.</td>
+                  <td>A Pagar</td>
+                </tr>
+             </table>
+             </li>
+             <div data-role="fieldcontain">    
+              <label>Valor Metro Cuadrado</label>
+              <input type="number" name="itemMetroCuadrado" id="itemMetroCuadrado" value="" style="width:25px" />
+              <label>UF</label>  
+             </div>  
+             <div data-role="fieldcontain">    
+              <label>Modificar Monto Asegurado</label>
+              <input type="number" name="itemMontoasegurado" id="itemMontoasegurado" value="" style="width:25px" />
+             </div> 
+             <div data-role="fieldcontain">          
+               <label for="txtObservacionPresupuesto">Observación Inspector</label>
+               <textarea name="txtObservacionPresupuesto" id="txtObservacionPresupuesto"></textarea> 
+             </div> 
+           </li>
+       </ul>
+       
+    </div><!--content-->  
+    <div data-role="footer" data-position="fixed"  id="id__" class="">		
+	  <div data-role="navbar"   data-iconpos="left">
+		<ul>
+			<li><a href="#" onclick="window.history.back();" id="" data-icon="arrow-l">Atras</a></li>
+			<li><a href="#fotoyfirmaruta" id="" data-icon="arrow-r">Siguiente</a></li>
+		</ul>
+	  </div><!-- /navbar -->
+    </div><!-- /footer --> 
+  </div><!--page-->
+  
+  <div data-role="page" id="fotoyfirmaruta">
+	<div data-role="header" data-theme="a" >
+   
+			<h3>Inspecciones</h3>
+			<a href="#paginaseg" data-icon="grid" data-iconpos="notext"  class="ui-btn-right">Menu</a>
+      
+	</div><!-- header -->
+	
+    <div  data-role="content"   >
+       <br>
+       <ul data-role="listview" >
+           <li data-role="list-divider">Firma</li>
+           <li>
+             <div data-role="content" align="center">
+                <a href="#" data-role="button" data-inline="true">Foto</a>
+                <a href="#" data-role="button" data-inline="true">Firma</a>
+             </div>
+           </li>
+       </ul>
+       
+       
+    </div><!--content-->  
+    <div data-role="footer" data-position="fixed"  id="id__" class="">		
+	  <div data-role="navbar"   data-iconpos="left">
+		<ul>
+			<li><a href="#" onClick="grabarDatosHogar()" id="" data-icon="plus">Guardar y Enviar Inspección</a></li>
+		</ul>
+	  </div><!-- /navbar -->
+    </div><!-- /footer --> 
+  </div><!--page-->
+      
+    <!-- JavaScript at the bottom for fast page loading -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script-->
+
+ 
+
+    <!--script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script-->
+    <!-- scripts concatenated and minified via ant build script-->
+
+    <!--script src="js/helper.js"></script-->
+
+    <!-- end scripts-->
+    <!-- Debugger - remove for production -->
+    <!-- <script src="https://getfirebug.com/firebug-lite.js"></script> -->
+    <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+       mathiasbynens.be/notes/async-analytics-snippet -->
+
+    <script>
+    
+    </script>
+
+</body>
+</html>

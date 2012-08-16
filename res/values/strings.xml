@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="hello">Hello World, FirmagalaxyActivity!</string>
+    <string name="app_name">Mpro Movil</string>
+    <string name="limpiatodo">limpiatodo</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="Limpiar">Limpiar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Nuevo">Nuevo</string>
+    <string name="tituloDraw">Ingrese su Firma</string>
+</resources>

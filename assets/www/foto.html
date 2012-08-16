@@ -1,0 +1,112 @@
+<!doctype html>
+<html  lang="en">
+
+<head>
+  <meta content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+  <meta name="HandheldFriendly" content="True">
+  		 <meta name="MobileOptimized" content="320">
+  		 <meta name="viewport" content="width=device-width">	 
+  <title></title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jquery.mobile-1.1.0.css">
+  <script src="js/libs/jquery-1.7.1.min.js"></script>
+  <script src="js/libs/jquery.mobile-1.1.0.js" type="text/javascript"></script>
+  <script src="js/webintent.js" type="text/javascript"></script>
+  </head>
+<body>
+
+   <div data-role="page" id="foto">
+	<div data-role="header" >
+   
+			<h3>Inspecciones</h3>
+			<a href="#paginaseg" data-icon="grid" data-iconpos="notext"  class="ui-btn-right">Menu</a>
+      
+	</div><!-- header -->
+	
+    <div  data-role="content" align="center"  id="album" >
+
+	    <button onclick="capturePhoto();">Tomar Foto</button> <br>
+    <img style="display:none;width:100%;" id="smallImage" src="" />
+  
+
+       
+    </div><!--content-->  
+    <div data-role="footer" data-position="fixed"  id="id__" class="">		
+	  <div data-role="navbar"  data-iconpos="left">
+		<ul>
+			<li><a href="#" onClick="document.location.href = 'ruta.html#pgDaniosVerificados';" id="" data-icon="arrow-l" >Atrás</a></li>
+			<li><a href="#" onClick="obtieneFirma()" id="" data-icon="arrow-r" >Firma</a></li>
+		</ul>
+	  </div><!-- /navbar -->
+    </div><!-- /footer --> 
+  </div><!--page-->    
+   <script src="js/cordova-1.6.1.js"></script>
+ <script type="text/javascript" charset="utf-8">
+
+    var listafotos = [];
+    var pictureSource;   
+    var destinationType; 
+    document.addEventListener("deviceready",onDeviceReady,false);
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+    function onPhotoDataSuccess(imageData) {
+      listafotos[listafotos.length] = imageData
+      var smallImage = $('img')[$('img').length - 1];
+      smallImage.style.display = 'block';
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+      var br = $("<br>");
+      var title ="<h1>"+ getDate() + "-" + getTime() + "</h1>";
+      
+	   $("#album")
+	   .append(title)
+	   .append(br)
+	   .append($('<img /\>').width('90%'))
+	   .append(br)
+	   .append(br)
+	   
+    }
+    function capturePhoto() {
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+  
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+	
+    function obtieneFirma(){
+    	WebIntent.prototype.startActivity(
+    									{action:'Firma'},
+    									function(e){alert(JSON.stringify(e))},
+    									function(e){alert(JSON.stringify(e))}
+    									)
+    }
+    getDate= function () {
+        var momentoActual = new Date();
+        var day = momentoActual.getDate()
+        var month = momentoActual.getMonth() + 1
+        var year = momentoActual.getFullYear()
+
+        return ((day.toString().length == 1) ? '0' : '') + day.toString() + "" + ((month.toString().length == 1) ? '0' : '') + month.toString() + "" + year.toString()
+
+    }
+    //entrega el hh:mm:ss
+    getTime= function () {
+        var momentoActual = new Date();
+        var hora = momentoActual.getHours();
+        var minuto = momentoActual.getMinutes();
+        var segundo = momentoActual.getSeconds();
+        return ((hora.toString().length == 1) ? '0' : '') + hora.toString()  + "" + ((minuto.toString().length == 1) ? '0' : '') + minuto.toString() + "" + ((segundo.toString().length == 1) ? '0' : '') + segundo.toString();
+    }
+
+    </script>
+
+  <script src="js/helper.js"></script>
+
+
+
+</body>
+</html>

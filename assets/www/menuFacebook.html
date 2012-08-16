@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8"/>
+     <meta />
+     <script src="js/libs/jquery-1.7.1.min.js"></script>
+     <script>
+	    var control =0;
+       $(document).ready(function(e) {
+         $("#boton").on("click",function(){
+		    if(control == 0){// el menu esta oculto
+			   $("#pagina").animate({
+			     marginLeft: "240px"
+			   });
+			   control++;
+			}else{
+			       $("#pagina").animate({
+					 marginLeft: "0"
+				   });
+				   control--;
+				 }	 
+	     });
+       });
+     </script>
+     <style>
+            body{
+			  font-family:'Helvetica',Verdana;
+			  margin:0;
+			}
+		    article{
+			  font-size:15px;
+			  padding:20px;
+			}
+			nav{
+			  background-color: #32394b;
+			  color:#ccc;
+			  height:480px;
+			  position:absolute;
+			  overflow:hidden;
+			  top:0;
+			  width:320px;
+			  z-index:0;	
+			}
+			li{
+			  padding:20px 10px;
+			  list-style:none;
+			  border-bottom:solid 2px #000;
+			}
+			li a{
+			  color: #ccc;
+			  font-size:#18px;
+			  text-decoration:none;
+			}
+			
+			#container{
+			  height:480px;
+			  overflow:hidden;
+			  width:320px;
+			}
+			#pagina{
+			  background-color: #DDD;
+			  position:absolute;
+			  top:0;
+			  width:320px;
+			  z-index:1;
+			}
+			
+			#marcadores{
+			  background-color: #ccc;	
+			}			
+			#boton{
+			  cursor:pointer;
+			  padding:5px;	
+			}
+     </style>
+</head>
+<body>
+   <div id="container">
+      <nav>
+         <li>
+           <a href="">Inicio</a>
+         </li>
+         <li>
+           <a href="">Galeria</a>
+         </li>
+         <li>
+           <a href="">Contacto</a>
+         </li>
+      </nav>
+      <div id="pagina">
+         <div  id="marcadores">
+           <img src="img/l/apple-touch-icon.png" id="boton" />
+         </div> 
+         <article>
+            <h1>Test</h1>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <h2>Test2</h2>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+            <p>dasdasd asd asd as das das das das dasd as das d</p>
+         </article>    
+      </div>
+   </div>   
+</body>
+</html>

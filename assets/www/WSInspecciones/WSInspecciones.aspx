@@ -1,0 +1,1 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="WSInspecciones.aspx.vb" Inherits="WebService_LiquidacionWS"  %>
