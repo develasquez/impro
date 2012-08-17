@@ -10,6 +10,7 @@ $( function() {
     document.addEventListener("menubutton", onMenuKeyDown, false);
     verMenu();
     hogar.init()
+   
 })
 
 
@@ -73,41 +74,74 @@ hogar = {
 
 
 function guardarInspeccionBanco(){
-	db.transaction(hogar.insertInspeccion, errorCB, successCB);	
+	db.transaction(function(tx){
 	sql = 'CREATE TABLE IF NOT EXISTS inspeccionBanco (id ,  fechaHoy, nombreEDN , nombreCliente, rutCliente, calle, numeroCalle, direccion, nombreEmpresa, rutEmpresa ) ';
 		tx.executeSql(sql,[],function(tx, results){
 			
 			//insert de los campos
-			var params =[  fechaHoy:$("#txtFechaHoy").val(),
-			    nombreEDN : $("#txtNomEDN").val() ,
-			    nombreCliente: $("#txtNomCliente").val() ,
-			    rutCliente: $("#rutCliente").val() ,
-			     calle: $("#txtCalle").val() , 
-			     numeroCalle: $("#txtNumeroCalle").val() , 
-			     direccion: $("#txtDireccion").val() , 
-			     nombreEmpresa: $("#txtNomEmpresa").val() , 
-			     rutEmpresa: $("#txtRutEmpresa").val() ];
-			
-			
-			//limpia los campos
+			sql = 'SELECT max(id) max_id FROM inspeccionBanco';
+			tx.executeSql(sql,[],function(tx, results){
+				var item = results.rows.item(0).max_id==null?1:parseInt(results.rows.item(0).max_id) + 1;
+				var params =[  
+				 item,	
+				 $("#txtFechaHoy").val(),
+			     $("#txtNomEDN").val() ,
+			     $("#txtNomCliente").val() ,
+			     $("#rutCliente").val() ,
+			     $("#txtCalle").val() , 
+			     $("#txtNumeroCalle").val() , 
+			     $("#txtDireccion").val() , 
+			     $("#txtNomEmpresa").val() , 
+			     $("#txtRutEmpresa").val() ];
+				var sqlInsert= "insert into inspeccionBanco (id ,  fechaHoy, nombreEDN , nombreCliente, rutCliente, calle, numeroCalle, direccion, nombreEmpresa, rutEmpresa ) " + 
+								" values ( ?,?,?,?,?,?,?,?,?,?)";
+				tx.executeSql(sqlInsert,params,function(tx, results){
+
+					alert("No se ha encontrado conexion 3G la informacion se ha registrado localmente");
+					//limpia los campos
 			 
-			$("#txtFechaHoy").val("");
-			$("#txtNomEDN").val("") ;
-			$("#txtNomCliente").val("") 
-			$("#rutCliente").val("") 
-			$("#txtCalle").val("")  
-			$("#txtNumeroCalle").val("")  
-			$("#txtDireccion").val("")  
-			$("#txtNomEmpresa").val("")  
-			 $("#txtRutEmpresa").val("") 
-			  
-			//lee archivos de la carpeta y busca la ultima
+					  
+					//lee archivos de la carpeta y busca la ultima
+						//buscaFirma();
 
-			//leer base de ruts
+					//leer base de ruts
+						/*$.ajax({
+							url: "../WebService/LiquidacionWS.aspx/metodo",
+							dataType: "json",
+							type: "POST",
+							contentType: "application/json; charset=utf-8",
+							data: JSON.stringify({
+								
+							}),
+							success: function (data) {
+							data = JSON.parse(data.d).data;
+							
+							}
+							});*/
+					if (confirm("El RUT ingresado no se encuentra registrado, Desea tomas las fortografias ")){
+							document.location.href ="foto.html" ;
+					}else{
 
-			//si no hay rut sacar fotos de la casa.
+						$("#txtFechaHoy").val("");
+						$("#txtNomEDN").val("") ;
+						$("#txtNomCliente").val("") 
+						$("#rutCliente").val("") 
+						$("#txtCalle").val("")  
+						$("#txtNumeroCalle").val("")  
+						$("#txtDireccion").val("")  
+						$("#txtNomEmpresa").val("")  
+						$("#txtRutEmpresa").val("") 
+						document.location.href ="index.html" ;
+
+					}
+					//si no hay rut sacar fotos de la casa.
+				},errorCB)	
+			},errorCB)					
+			
+			
 
 		},errorCB)
+}, errorCB, successCB);	
 }
 
 
@@ -138,7 +172,7 @@ function buscaFirma(){
 	
 	   function gotFS(fileSystem) {
 	    	console.log(JSON.stringify(fileSystem))
-	    	 fileSystem.root.getDirectory("/sdCard/firmas", {create: false, exclusive: false}, successDirectorio, fail);
+	    	 fileSystem.root.getDirectory("/mnt/sdcard/Application/SDraw/Firma", {create: false, exclusive: false}, successDirectorio, fail);
 	    }
 	  
 	   
