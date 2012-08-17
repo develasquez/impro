@@ -49,12 +49,6 @@ hogar = {
 		tx.executeSql(sql);
 		sql = "CREATE TABLE IF NOT EXISTS firmasHogar (id ,  idHogar , firmaBase64 , extencion ) " 
 		tx.executeSql(sql);
-		
-		
-		
-		
-		
-		
 		sql = 'SELECT max(id) max_id FROM hogar';
 		tx.executeSql(sql,[],function(tx, results){
 			/*
@@ -79,6 +73,24 @@ hogar = {
 	
 }
 
+
+function guardarInspeccionBanco(){
+	db.transaction(hogar.insertInspeccion, errorCB, successCB);	
+	sql = 'CREATE TABLE IF NOT EXISTS inspeccionBanco (id ,  fechaHoy, nombreEDN , nombreCliente, rutCliente, calle, numeroCalle, direccion, nombreEmpresa, rutEmpresa ) ';
+		tx.executeSql(sql,[],function(tx, results){
+			
+			//insert de los campos
+			
+			//limpia los campos
+
+			//lee archivos de la carpeta y busca la ultima
+
+			//leer base de ruts
+
+			//si no hay rut sacar fotos de la casa.
+
+		},errorCB)
+}
 
 
 
