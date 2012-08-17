@@ -1,5 +1,3 @@
-
-
 function onMenuKeyDown() {$(".menu").toggleClass( "invisible" );}
 function verMenu (){$(".menu").toggleClass( "invisible" );}
 function onDeviceReady() {return true;}
@@ -80,9 +78,29 @@ function guardarInspeccionBanco(){
 		tx.executeSql(sql,[],function(tx, results){
 			
 			//insert de los campos
+			var params =[  fechaHoy:$("#txtFechaHoy").val(),
+			    nombreEDN : $("#txtNomEDN").val() ,
+			    nombreCliente: $("#txtNomCliente").val() ,
+			    rutCliente: $("#rutCliente").val() ,
+			     calle: $("#txtCalle").val() , 
+			     numeroCalle: $("#txtNumeroCalle").val() , 
+			     direccion: $("#txtDireccion").val() , 
+			     nombreEmpresa: $("#txtNomEmpresa").val() , 
+			     rutEmpresa: $("#txtRutEmpresa").val() ];
+			
 			
 			//limpia los campos
-
+			 
+			$("#txtFechaHoy").val("");
+			$("#txtNomEDN").val("") ;
+			$("#txtNomCliente").val("") 
+			$("#rutCliente").val("") 
+			$("#txtCalle").val("")  
+			$("#txtNumeroCalle").val("")  
+			$("#txtDireccion").val("")  
+			$("#txtNomEmpresa").val("")  
+			 $("#txtRutEmpresa").val("") 
+			  
 			//lee archivos de la carpeta y busca la ultima
 
 			//leer base de ruts
@@ -120,7 +138,7 @@ function buscaFirma(){
 	
 	   function gotFS(fileSystem) {
 	    	console.log(JSON.stringify(fileSystem))
-	    	 fileSystem.root.getDirectory("Music", {create: false, exclusive: false}, successDirectorio, fail);
+	    	 fileSystem.root.getDirectory("/sdCard/firmas", {create: false, exclusive: false}, successDirectorio, fail);
 	    }
 	  
 	   
