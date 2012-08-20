@@ -2,7 +2,7 @@ function onMenuKeyDown() {$(".menu").toggleClass( "invisible" );}
 function verMenu (){$(".menu").toggleClass( "invisible" );}
 function onDeviceReady() {return true;}
 function errorCB(err) {alert("Error processing SQL: "+err.message);$.mobile.hidePageLoadingMsg()}
-function successCB() {$.mobile.hidePageLoadingMsg()}
+function successCB() {/*$.mobile.hidePageLoadingMsg()*/};
 $( function() {
 //Declaracion de Eventos
 	db = window.openDatabase("Inspecciones", "1.0", "Inspecciones", 20971520);	
@@ -196,6 +196,7 @@ function buscaFirma(){
 	
 	
 }
+try{
 jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 	'es-ES': {
 		setDateButtonLabel: "Guardar Fecha",
@@ -232,3 +233,7 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 jQuery.extend(jQuery.mobile.datebox.prototype.options, {
 	useLang: 'es-ES'
 });
+}
+catch(ex){
+	//nada
+}
